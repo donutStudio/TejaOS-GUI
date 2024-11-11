@@ -1,8 +1,8 @@
 .center-align {
-  display: block; 
-  margin-left: auto; 
-  margin-right: auto; 
-  width: 50%; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .glow {
@@ -17,7 +17,7 @@
   box-shadow: 0 0 1.5px rgba(75, 168, 255, 0.438);
 }
 
-#progress_bar { 
+#progress_bar {
   width: 1%;
   height: 15px;
   background-color: rgb(255, 255, 255);
@@ -30,6 +30,7 @@
   align-items: center;
   overflow: hidden;
 }
+
 .fill img {
   flex-shrink: 0;
   min-width: 100%;
@@ -46,14 +47,7 @@
   src: url(assets/fonts/garet/Garet-Book.woff2);
 }
 
-#time {
-  font-size: 70px;
-  margin-bottom: 570px;
-}
-#date {
-  font-size: 24px;
-  margin-bottom: 420px;
-}
+
 
 .section {
   height: 100vh;
@@ -74,16 +68,84 @@
   align-items: center;
   overflow: auto;
 }
+
 .section {
-  height: 100vh;  /* Full viewport height */
+  height: 100vh;
+  /* Full viewport height */
   width: 100vw;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  scrollbar-color: rgba(255, 255, 255, 0);
 }
 
-html {
-  scroll-behavior: smooth;
+#home_screen {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;     /* Aligns items from the start of the row */
+  align-items: flex-start;         /* Ensures all items align at the top */
+  align-content: flex-start;       /* Aligns wrapped rows to the top */
+  flex-wrap: wrap;                 /* Enables wrapping of items */
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  gap: 3vh;                       /* Consistent spacing between items, both vertically and horizontally */
+}
+
+.app {
+  border-radius: 10.9375px;
+  background-size: cover;
+  z-index: 100;
+  height: 70px;                     /* Keep the height fixed */
+  width: 70px;                      /* Keep the width fixed */
+  filter: drop-shadow(0px 0px 20px #4faaffa8);
+  box-sizing: border-box;           /* Ensure margin doesn't affect the layout */
+}
+
+.app:active {
+  filter: contrast(200%);
+}
+
+#navbar {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+/* Navbar links */
+#navbar a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 7px;
+  text-decoration: none;
+}
+
+#battery-icon {
+  position: relative;
+  width: 50px;
+  height: 20px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  display: inline-block;
+}
+
+#battery-level {
+  width: 0%;
+  height: 100%;
+  background-color: #4caf50; /* Green for battery level */
+  border-radius: 3px;
+}
+
+#battery-border {
+  position: absolute;
+  top: 5px;
+  right: -6px;
+  width: 8px;
+  height: 10px;
+  background-color: #000;
+  border-radius: 2px;
 }
