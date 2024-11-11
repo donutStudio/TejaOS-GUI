@@ -1,0 +1,96 @@
+/* Make the wallpaper fixed and cover the entire viewport */
+body {
+  background-image: url('assets/wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+.center-align {
+  display: block; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 50%; 
+}
+
+.glow {
+  filter: drop-shadow(0px 0px 20px #2194ff);
+}
+
+#progress {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: 0 0 1px rgba(54, 158, 255, 0.26);
+}
+
+#progress_bar { 
+  width: 1%;
+  height: 15px;
+  background-color: rgb(255, 255, 255);
+  filter: drop-shadow(0px 0px 10px #ffffff81);
+}
+
+.fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.fill img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.front {
+  position: absolute;
+  z-index: 100;
+}
+
+@font-face {
+  font-family: LightFont;
+  src: url(assets/fonts/garet/Garet-Book.woff2);
+}
+
+#time {
+  font-size: 70px;
+  margin-bottom: 570px;
+}
+#date {
+  font-size: 24px;
+  margin-bottom: 420px;
+}
+
+.section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.full-section {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+.section {
+  height: 100vh;  /* Full viewport height */
+  width: 100vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
