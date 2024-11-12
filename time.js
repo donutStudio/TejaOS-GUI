@@ -13,10 +13,18 @@ function updateTime() {
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
     const dateString = now.toLocaleDateString('en-US', options);
 
-    document.getElementById('time').textContent = timeString;
-    document.getElementById('date').textContent = dateString;
+    // Update all elements with class 'time'
+    const timeElements = document.querySelectorAll('.time');
+    timeElements.forEach(element => {
+        element.textContent = timeString;
+    });
+
+    // Update all elements with class 'date'
+    const dateElements = document.querySelectorAll('.date');
+    dateElements.forEach(element => {
+        element.textContent = dateString;
+    });
 }
 
 setInterval(updateTime, 1000);
-
 updateTime();

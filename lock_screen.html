@@ -50,15 +50,18 @@
 <body>
     
     <div id="navbar" style="z-index: 1000;">
-        <a id="time" style="font-family: LightFont;">11:30</a>
-        <a>Contact</a>
+        <a id="time" class="time" style="font-family: LightFont; margin-top: 0.3vh; font-size: 14px;">11:30</a>
+        <div id="battery" class="battery-container">
+            <div id="battery-bar" class="battery-bar"></div>
+            <span id="battery-percentage" style="font-family: LightFont;">100%</span>
+        </div>
       </div>
 
     <div class="section" id="lock_screen">
-        <h1 class="front glow"
+        <h1 class="front glow time"
             style="text-align: center; color: white; font-family: LightFont; font-size: 70px; margin-bottom: 570px;"
             id="time">11:30</h1>
-        <h1 class="front glow"
+        <h1 class="front glow date"
             style="text-align: center; color: white; font-family: LightFont; font-size: 24px; margin-bottom: 420px;"
             id="date">Wednesday, November 6th</h1>
     </div>

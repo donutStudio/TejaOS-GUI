@@ -47,8 +47,6 @@
   src: url(assets/fonts/garet/Garet-Book.woff2);
 }
 
-
-
 .section {
   height: 100vh;
   width: 100vw;
@@ -121,4 +119,50 @@
   text-align: center;
   padding: 7px;
   text-decoration: none;
+}
+
+#battery {
+  color: white;
+  font-family: LightFont;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.battery-container {
+  display: flex;
+  align-items: center;
+}
+
+.battery-bar {
+  margin-top: 1.1vh;
+  margin-left: 2vw;
+  height: 10px;
+  width: 30px; /* Default width */
+  background-color: gray;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  border: solid rgba(255, 255, 255, 0.123) 2px;
+}
+
+.battery-fill {
+  height: 100%;
+  background-color: rgb(255, 255, 255); /* Color will change based on battery level */
+  transition: width 0.5s ease; /* Smooth transition */
+}
+
+#battery-percentage {
+  margin-top: 1.1vh;
+  position: relative;
+  font-size: 14px;
+}
+
+.time {
+  text-align: center;
+}
+
+.date {
+  text-align: center;
 }
