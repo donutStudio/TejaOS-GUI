@@ -143,6 +143,14 @@
   text-decoration: none;
 }
 
+#navbar img {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 7px;
+  text-decoration: none;
+}
+
 #battery {
   color: white;
   font-family: LightFont;
@@ -187,4 +195,12 @@
 
 .date {
   text-align: center;
+}
+
+/* Styling for the Wi-Fi icon image */
+.navbar-icon {
+  object-fit: contain;     /* Space between the icon and the time */
+  position: relative;
+  top: 5px;
+  width: 30px;               /* Adjust the vertical alignment */
 }
