@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TejaOS</title>
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .header img {
+            height: 40px;
+        }
+
+        .header .search-bar {
+            background-color: #333;
+            padding: 5px 10px;
+            border-radius: 25px;
+            width: 70%;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            background: none;
+            border: none;
+            color: white;
+            width: 100%;
+            padding: 5px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-bar input::placeholder {
+            color: #777;
+        }
+
+        /* Playlist */
+        .playlist {
+            margin-top: 20px;
+        }
+
+        .song {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+        }
+
+        .song img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        .song-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .song-details .song-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .song-details .song-artist {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Player */
+        .player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #121212;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #333;
+        }
+
+        .player img {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn {
+            margin: 0 10px;
+            color: #1db954;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .control-btn:disabled {
+            color: #555;
+        }
+
+        .player-info {
+            flex: 1;
+            padding-left: 10px;
+            color: #aaa;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .player-info .song-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .player-info .song-artist {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="navbar" style="z-index: 1000; width: 100%;">
+        <a id="time" class="time" style="font-family: LightFont; margin-top: 0.3vh; font-size: 14px;">11:30</a>
+        <img src="assets/wifi_PNG62364.png" class="navbar-icon">
+        <img src="assets/output-onlinepngtools.png" class="navbar-icon" style="width: 20px; height: 20px; margin-left: 5px;">
+        <img src="assets/output-onlinepngtools1.png" class="navbar-icon" style="width: 20px; height: 20px;">
+        <div id="battery" class="battery-container">
+            <div id="battery-bar" class="battery-bar"></div>
+            <span id="battery-percentage" style="font-family: LightFont;">100%</span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Header Section -->
+        <div class="header">
+            <img src="assets/Spotify_logo_with_text.svg.png" alt="Spotify Logo">
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+    
+        <!-- Playlist Section -->
+        <div class="playlist">
+            <div class="song" data-song="assets/KSI-Thick-Of-It-feat.-Trippie-Redd-Official-Lyric-Video.mp3">
+                <img src="assets/maxresdefault.jpg" alt="Song Thumbnail">
+                <div class="song-details">
+                    <div class="song-title">Thick of It</div>
+                    <div class="song-artist">KSI</div>
+                </div>
+            </div>        
+            <div class="song" data-song="assets/FEiN-Song---Travis-Scott(trendymusic.in).mp3">
+                <img src="assets/ab67616d0000b273881d8d8378cd01099babcd44.jfif" alt="Song Thumbnail">
+                <div class="song-details">
+                    <div class="song-title">FE!N</div>
+                    <div class="song-artist">Travis Scott ft Playboi Carti</div>
+                </div>
+            </div>
+            <div class="song" data-song="assets/Gegagedigedagedago.mp3">
+                <img src="assets/ef1946c3789e869d054817f172e98569.jpg" alt="Song Thumbnail">
+                <div class="song-details">
+                    <div class="song-title">Gedagedigedagedago</div>
+                    <div class="song-artist">RAZI, Razi, Rednex</div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Music Player -->
+        <div class="player">
+            <div class="player-info">
+                <div class="song-title">Select a Song</div>
+                <div class="song-artist">Artist Name</div>
+            </div>
+            <div class="player-controls">
+                <span class="control-btn" aria-label="Previous">&lt;</span>
+                <span class="control-btn" id="playPauseBtn" aria-label="Play/Pause">&#9658;</span>
+                <span class="control-btn" aria-label="Next">&gt;</span>
+            </div>
+            <img src="https://via.placeholder.com/40" alt="Album Art" id="albumArt">
+        </div>
+    
+    </div>
+    
+    <!-- Audio Player -->
+    <audio id="audioPlayer" preload="auto"></audio>
+    
+    <script>
+        // Get references to the HTML elements
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const songTitleElem = document.querySelector('.player-info .song-title');
+        const songArtistElem = document.querySelector('.player-info .song-artist');
+        const albumArtElem = document.getElementById('albumArt');
+        let isPlaying = false;
+    
+        // Function to handle song click
+        function playSong(songFile, title, artist, albumArtUrl) {
+            // Set the source of the audio element
+            audioPlayer.src = songFile;
+            songTitleElem.textContent = title;
+            songArtistElem.textContent = artist;
+            albumArtElem.src = albumArtUrl || "https://via.placeholder.com/40"; // Placeholder if no album art
+            
+            // Play the song
+            audioPlayer.play();
+            isPlaying = true;
+            updatePlayPauseButton();
+        }
+    
+        // Function to toggle play/pause
+        function togglePlayPause() {
+            if (isPlaying) {
+                audioPlayer.pause();
+            } else {
+                audioPlayer.play();
+            }
+            isPlaying = !isPlaying;
+            updatePlayPauseButton();
+        }
+    
+        // Function to update play/pause button
+        function updatePlayPauseButton() {
+            if (isPlaying) {
+                playPauseBtn.innerHTML = '&#10074;&#10074;'; // Pause icon (two bars)
+            } else {
+                playPauseBtn.innerHTML = '&#9658;'; // Play icon (triangle)
+            }
+        }
+    
+        // Add click event listeners to each song
+        const songs = document.querySelectorAll('.song');
+        songs.forEach(song => {
+            song.addEventListener('click', () => {
+                const songFile = song.getAttribute('data-song');
+                const songTitle = song.querySelector('.song-title').textContent;
+                const songArtist = song.querySelector('.song-artist').textContent;
+    
+                // Call playSong to play the clicked song
+                playSong(songFile, songTitle, songArtist, song.querySelector('img').src);
+            });
+        });
+    
+        // Add play/pause button functionality
+        playPauseBtn.addEventListener('click', togglePlayPause);
+    </script>
+    
+    </div>
+    
+
+    <script src="time.js"></script>
+    <script src="reset.js"></script>
+    <script src="battery.js"></script>
+</body>
+
+</html>

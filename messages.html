@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TejaOS</title>
+    <style>
+        body {
+            background-color: #000;
+            /* Optional: You can also set a black background for the body */
+        }
+
+        messages {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 98vh;
+        }
+
+        .chat-container {
+            width: 380px;
+            max-width: 100%;
+            background-color: rgb(38, 39, 41);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+        }
+
+        .message {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        .sender {
+            flex: 1;
+            text-align: left;
+        }
+
+        .receiver {
+            flex: 1;
+            text-align: right;
+        }
+
+        .bubble {
+            max-width: 70%;
+            padding: 10px 16px;
+            border-radius: 18px;
+            font-size: 16px;
+            line-height: 20px;
+            word-wrap: break-word;
+        }
+
+        .sender .bubble {
+            background-color: #08488d;
+            color: white;
+        }
+
+        .receiver .bubble {
+            background-color: #e5e5ea;
+            color: black;
+        }
+
+        .input-container {
+            display: flex;
+            margin-top: 16px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+
+        .input-field {
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .send-btn {
+            background-color: #0052aa;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .send-btn:hover {
+            background-color: #005b99;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar" style="z-index: 1000; background-color: black; position: fixed; top: 0; left: 0; width: 100%;">
+        <a id="time" class="time" style="font-family: LightFont; margin-top: 0.3vh; font-size: 14px;">11:30</a>
+        <img src="assets/wifi_PNG62364.png" class="navbar-icon">
+        <img src="assets/output-onlinepngtools.png" class="navbar-icon"
+            style="width: 20px; height: 20px; margin-left: 5px;">
+        <img src="assets/output-onlinepngtools1.png" class="navbar-icon" style="width: 20px; height: 20px;">
+        <div id="battery" class="battery-container">
+            <div id="battery-bar" class="battery-bar"></div>
+            <span id="battery-percentage" style="font-family: LightFont;">100%</span>
+        </div>
+    </div>
+
+    <script src="time.js"></script>
+    <script src="reset.js"></script>
+    <script src="battery.js"></script>
+
+    <messages>
+
+        <div class="chat-container">
+            <div id="messages-container"></div>
+            <div class="input-container">
+                <input id="input-field" type="text" class="input-field" placeholder="Type a message...">
+                <button id="send-btn" class="send-btn">▶</button>
+            </div>
+        </div>
+
+    </messages>
+
+    <script>
+        // Get DOM elements
+        const inputField = document.getElementById('input-field');
+        const sendBtn = document.getElementById('send-btn');
+        const messagesContainer = document.getElementById('messages-container');
+
+        // Function to send message
+        function sendMessage() {
+            const messageText = inputField.value.trim();
+
+            if (messageText !== '') {
+                // Create message element
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'sender');
+
+                // Create bubble and add message text
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                bubble.textContent = messageText;
+
+                // Append bubble to message, and message to chat
+                messageElement.appendChild(bubble);
+                messagesContainer.appendChild(messageElement);
+
+                // Scroll to the bottom of the chat
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                // Clear input field after sending
+                inputField.value = '';
+            }
+        }
+
+        // Send message when clicking the send button
+        sendBtn.addEventListener('click', sendMessage);
+
+        // Send message when pressing Enter
+        inputField.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+
+</html>

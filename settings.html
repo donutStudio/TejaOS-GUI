@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TejaOS</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .setting {
+            border-radius: 10px;
+            background-color: #ffffff3a;
+            filter: drop-shadow(5px red);
+            height: 100vh;
+            width: 40px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <script src="time.js"></script>
+    <script src="reset.js"></script>
+    <script src="battery.js"></script>
+
+    <div id="navbar" style="z-index: 1000;">
+        <a id="time" class="time" style="font-family: LightFont; margin-top: 0.3vh; font-size: 14px;">11:30</a>
+        <img src="assets/wifi_PNG62364.png" class="navbar-icon">
+        <img src="assets/output-onlinepngtools.png" class="navbar-icon"
+            style="width: 20px; height: 20px; margin-left: 5px;">
+        <img src="assets/output-onlinepngtools1.png" class="navbar-icon" style="width: 20px; height: 20px;">
+        <div id="battery" class="battery-container">
+            <div id="battery-bar" class="battery-bar"></div>
+            <span id="battery-percentage" style="font-family: LightFont;">100%</span>
+        </div>
+    </div>
+
+    <div class="settting">
+        <p>sigma</p>
+    </div>
+
+</body>
+
+</html>
