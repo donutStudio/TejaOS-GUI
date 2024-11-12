@@ -1,6 +1,6 @@
 function openBrawlStars() {
     // This is a fallback URL if the app is not found (could be an internal page or an external one)
-    var fallbackURL = "https://yourwebsite.com/404-or-brawl-alternative"; 
+    var fallbackURL = "index.html"; 
     
     // This is a basic check to see if the device is mobile
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
