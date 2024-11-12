@@ -33,12 +33,12 @@ function preventScroll() {
 // Function to navigate to the Home Screen
 function navigateToHomeScreen() {
     smoothScrollTo(homeScreen, 300);
-    window.addEventListener("scroll", preventScroll);
+    //window.addEventListener("scroll", preventScroll);
 }
 
 // Function to navigate to the Lock Screen
 function navigateToLockScreen() {
-    window.removeEventListener("scroll", preventScroll);
+    //window.removeEventListener("scroll", preventScroll);
     smoothScrollTo(lockScreen, 300);
 }
 
