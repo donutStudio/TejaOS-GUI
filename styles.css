@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 .center-align {
   display: block;
   margin-left: auto;
@@ -44,7 +47,7 @@
 
 @font-face {
   font-family: LightFont;
-  src: url(assets/fonts/garet/Garet-Book.woff2);
+  src: url("assets/fonts/garet/Garet-Book.woff2");
 }
 
 .section {
