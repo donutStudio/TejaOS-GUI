@@ -8,17 +8,21 @@
     <title>TejaOS</title>
     <style>
         body {
-    background-image: url('assets/wallpaper.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: 0;
-    overflow-y: auto;
-    overflow-x: hidden; /* Prevent horizontal scrollbar */
-    min-height: 100vh; /* Ensure the body covers at least the full viewport height */
-    position: relative; /* You can keep this if necessary */
-}
+            background-image: url('assets/wallpaper.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            /* Prevent horizontal scrollbar */
+            min-height: 100vh;
+            /* Ensure the body covers at least the full viewport height */
+            position: relative;
+            /* You can keep this if necessary */
+            overflow: hidden;
+        }
 
         /* Pseudo-element to create a blur effect on the background */
         body::before {
@@ -48,14 +52,14 @@
 </head>
 
 <body>
-    
+
     <div id="navbar" style="z-index: 1000;">
         <a id="time" class="time" style="font-family: LightFont; margin-top: 0.3vh; font-size: 14px;">11:30</a>
         <div id="battery" class="battery-container">
             <div id="battery-bar" class="battery-bar"></div>
             <span id="battery-percentage" style="font-family: LightFont;">100%</span>
         </div>
-      </div>
+    </div>
 
     <div class="section" id="lock_screen">
         <h1 class="front glow time"
@@ -66,11 +70,12 @@
             id="date">Wednesday, November 6th</h1>
     </div>
 
-    <div class="section" id="home_screen" style="flex-direction: row; justify-content: flex-start; align-items: flex-start;">
-        <div class="app" style="background-image: url('assets/unnamed.webp'); height: 75px; width: 75px; margin-top: 20px;"></div>
-        <div class="app" style="background-image: url('assets/youtube-app-icon.webp');  margin-top: 20px;"></div>
-        <div class="app" style="background-image: url('assets/spotify-music-2015-07-30.avif');  margin-top: 20px;"></div>
-        <div class="app" style="background-image: url('assets/builtIn/camera.png');  margin-top: 20px;"></div>
+    <div class="section" id="home_screen"
+        style="flex-direction: row; justify-content: flex-start; align-items: flex-start;">
+        <div class="app" style="background-image: url('assets/unnamed.webp'); height: 75px; width: 75px;"></div>
+        <div class="app" style="background-image: url('assets/youtube-app-icon.webp');"></div>
+        <div class="app" style="background-image: url('assets/spotify-music-2015-07-30.avif');"></div>
+        <div class="app" style="background-image: url('assets/builtIn/camera.png');"></div>
         <div class="app" style="background-image: url('assets/builtIn/messages.png');"></div>
         <div class="app" style="background-image: url('assets/builtIn/settings.png');"></div>
         <div class="app" style="background-image: url('assets/builtIn/calculator.png');"></div>
