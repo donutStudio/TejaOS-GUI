@@ -15,11 +15,11 @@ function updateBatteryStatus(battery) {
 
         // Change color based on battery level
         if (batteryLevel <= 10) {
-            batteryFill.style.backgroundColor = 'red';
+            batteryFill.style.backgroundColor = 'rgb(255, 255, 255)';
         } else if (batteryLevel <= 20) {
-            batteryFill.style.backgroundColor = 'orange';
+            batteryFill.style.backgroundColor = 'rgb(255, 255, 255)';
         } else {
-            batteryFill.style.backgroundColor = 'white';
+            batteryFill.style.backgroundColor = 'rgb(255, 255, 255)';
         }
     }
 
