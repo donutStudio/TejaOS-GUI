@@ -89,11 +89,10 @@
   align-items: flex-start;         /* Ensures all items align at the top */
   align-content: flex-start;       /* Aligns wrapped rows to the top */
   flex-wrap: wrap;                 /* Enables wrapping of items */
-  padding-left: 30px;
-  padding-right: 20px;
+  padding: 20px;
   box-sizing: border-box;
   overflow-x: hidden;
-  gap: 3vh;                       /* Consistent spacing between items, both vertically and horizontally */
+  gap: 2vh;                       /* Consistent spacing between items, both vertically and horizontally */
   padding-top: 50px;
 }
 
