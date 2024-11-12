@@ -1,11 +1,13 @@
-// homescreen.js
-
 let touchStartY = 0;
 let touchEndY = 0;
 let lockScreen = document.getElementById('lock_screen');
 let homeScreen = document.getElementById('home_screen');
+let navbar = document.getElementById('navbar'); // Assuming your navbar has the ID 'navbar'
 
 let isLocked = true; // Lock state, determines whether we are on the lock screen or home screen
+
+// Initial state of the navbar - hidden by default
+navbar.style.display = 'none';
 
 // Function to handle touch start event
 function handleTouchStart(event) {
@@ -21,7 +23,7 @@ function handleTouchEnd(event) {
         navigateToHomeScreen();
     }
     if (touchEndY - touchStartY > 50) {
-        // Swiped Up
+        // Swiped Down
         navigateToLockScreen();
     }
 }
@@ -85,18 +87,29 @@ window.onload = function () {
 const body = document.body;
 
 // Function to check if the user is on the home screen
-function toggleBlurOnScroll() {
+function toggleNavbarOnScroll() {
     const homeScreenPosition = homeScreen.getBoundingClientRect().top;
 
-    if (homeScreenPosition <= 0) {
-        // Add blur to the background if the home screen is in view
-        body.classList.add("blur-background");
-    } else {
-        // Remove blur when not on home screen
-        body.classList.remove("blur-background");
+    if (homeScreenPosition <= 100) {
+        // Show navbar when home screen is in view
+        navbar.style.display = 'block';
     }
 }
 
 // Event listener to check scroll position
-window.addEventListener("scroll", toggleBlurOnScroll);
+window.addEventListener("scroll", toggleNavbarOnScroll);
 
+// Double-tap detection
+let lastTapTime = 0;
+
+document.addEventListener('touchend', function (event) {
+    const currentTime = new Date().getTime();
+    const timeDifference = currentTime - lastTapTime;
+
+    if (timeDifference < 500 && timeDifference > 0) {
+        // Double tap detected
+        navbar.style.display = 'block'; // Show navbar
+    }
+
+    lastTapTime = currentTime;
+});
