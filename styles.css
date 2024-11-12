@@ -151,6 +151,14 @@
   text-decoration: none;
 }
 
+body.light-theme #navbar a {
+  color: #000;
+}
+
+body.light-theme #navbar img {
+  filter: brightness(0%);
+}
+
 #battery {
   color: white;
   font-family: LightFont;
@@ -177,6 +185,10 @@
   border: solid rgba(255, 255, 255, 0.123) 2px;
 }
 
+body.light-theme .battery-bar {
+  border: solid rgba(0, 0, 0, 0.329) 2px;
+}
+
 .battery-fill {
   height: 100%;
   background-color: rgb(255, 255, 255); /* Color will change based on battery level */
@@ -187,6 +199,10 @@
   margin-top: 1.1vh;
   position: relative;
   font-size: 14px;
+}
+
+body.light-theme #battery-percentage {
+  color: #000;
 }
 
 .time {

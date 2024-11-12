@@ -10,17 +10,142 @@
     <title>TejaOS</title>
     <style>
         body {
-            background-color: black;
+            background-color: #000;
+            overflow-x: hidden;
         }
 
+        settings *,
+        settings *::before,
+        settings *::after {
+            box-sizing: border-box;
+        }
+
+        /* Prevent horizontal scrolling on both html and body */
+        settings {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            /* Prevents extra width */
+            overflow-x: hidden;
+        }
+
+        /* Main styling for body */
+        settings {
+            background-color: #000000;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #000;
+        }
+
+        settings {
+            background-color: #000000;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            /* Prevent horizontal scrolling */
+        }
+
+        /* Center the .setting container */
         .setting {
-            border-radius: 10px;
-            background-color: #ffffff3a;
-            filter: drop-shadow(5px red);
-            height: 100vh;
-            width: 40px;
+            border-radius: 12px;
+            background-color: rgb(0, 0, 0);
+            padding: 1rem;
+            width: 95%;
+            max-width: 600px;
+            /* Ensures it doesn’t expand beyond screen width */
+            margin: 1.5rem auto;
         }
 
+        .section-title {
+            font-weight: 600;
+            color: #888;
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #999999;
+            font-size: 1rem;
+        }
+        
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-item img {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+        }
+
+        .setting-item-text {
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .setting-icon {
+            background-color: #007aff;
+            color: white;
+            border-radius: 50%;
+            padding: 8px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            font-size: 1rem;
+            filter: drop-shadow(0px 0px 20px blue);
+        }
+
+        .setting-item-label {
+            color: #007aff;
+        }
+
+        .setting-container {
+            margin-bottom: 1rem;
+            background-color: #ffffff00;
+            border: 2px solid rgb(67, 70, 82);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .settings-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        body.light-theme .setting-item-label {
+            color: #007aff;
+        }
+
+        body.light-theme {
+            background-color: #fbfcff;
+            color: #000;
+        }
+
+        /* Additional styles for elements in light theme */
+        body.light-theme .setting {
+            background-color: #fbfcff;
+        }
+
+        body.light-theme .setting-item-text {
+            color: #303030;
+        }
+
+        body.light-theme .setting-icon {
+            filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.493))
+        }
+
+        body.light-theme p {
+            color:#000;
+        }
     </style>
 </head>
 
@@ -29,22 +154,91 @@
     <script src="reset.js"></script>
     <script src="battery.js"></script>
 
+    <!-- Navbar -->
     <div id="navbar" style="z-index: 1000;">
-        <a id="time" class="time" style="font-family: LightFont; margin-top: 0.3vh; font-size: 14px;">11:30</a>
-        <img src="assets/wifi_PNG62364.png" class="navbar-icon">
-        <img src="assets/output-onlinepngtools.png" class="navbar-icon"
-            style="width: 20px; height: 20px; margin-left: 5px;">
-        <img src="assets/output-onlinepngtools1.png" class="navbar-icon" style="width: 20px; height: 20px;">
+        <a id="time" class="time" style="font-family: LightFont; font-size: 14px;">11:30</a>
+        <div>
+            <img src="assets/wifi_PNG62364.png" class="navbar-icon">
+            <img src="assets/output-onlinepngtools.png" class="navbar-icon" style="width: 20px; height: 20px;">
+            <img src="assets/output-onlinepngtools1.png" class="navbar-icon" style="width: 20px; height: 20px;">
+        </div>
         <div id="battery" class="battery-container">
             <div id="battery-bar" class="battery-bar"></div>
             <span id="battery-percentage" style="font-family: LightFont;">100%</span>
         </div>
     </div>
 
-    <div class="settting">
-        <p>sigma</p>
-    </div>
+    <settings>
+        <!-- Settings Container -->
+        <div class="setting">
+            <p class="settings-title">Settings</p>
 
+            <!-- Section 1 -->
+            <div class="setting-container">
+                <p class="section-title">Wireless & Networks</p>
+                <div class="setting-item">
+                    <div class="setting-item-text">
+                        <div class="setting-icon">📶</div>
+                        Wi-Fi
+                    </div>
+                    <span class="setting-item-label">Connected</span>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-item-text">
+                        <div class="setting-icon">📲</div>
+                        Bluetooth
+                    </div>
+                    <span class="setting-item-label">On</span>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="setting-container">
+                <p class="section-title">Personalization</p>
+                <div class="setting-item" id="theme-toggle">
+                    <div class="setting-item-text">
+                        <div class="setting-icon">🌙</div>
+                        Theme
+                    </div>
+                    <span class="setting-item-label" id="theme-label">Dark</span>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-item-text">
+                        <div class="setting-icon">🖌️</div>
+                        Wallpaper
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="setting-container">
+                <p class="section-title">System</p>
+                <div class="setting-item">
+                    <div class="setting-item-text">
+                        <div class="setting-icon">⚙️</div>
+                        General
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-item-text">
+                        <div class="setting-icon">🔋</div>
+                        Battery
+                    </div>
+                    <span class="setting-item-label">100%</span>
+                </div>
+            </div>
+        </div>
+    </settings>
+
+    <script>
+        // Toggle between light and dark themes
+        document.getElementById("theme-toggle").addEventListener("click", function () {
+            document.body.classList.toggle("light-theme");
+            const themeLabel = document.getElementById("theme-label");
+            // Update the label text based on the theme
+            themeLabel.textContent = document.body.classList.contains("light-theme") ? "Light" : "Dark";
+        });
+    </script>
 </body>
 
 </html>
