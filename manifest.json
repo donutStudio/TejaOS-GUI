@@ -3,6 +3,6 @@
     "short_name": "TejaOS",
     "display": "standalone",
     "orientation": "portrait",
-    "start_url": "/TejaOS-GUI/lockscreen.html",
-    "scope": "/TejaOS-GUI/"
+    "start_url": "https://donutstudio.github.io/TejaOS-GUI/index.html",
+    "scope": "https://donutstudio.github.io/TejaOS-GUI/"
  }
