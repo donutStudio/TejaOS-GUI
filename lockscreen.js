@@ -18,11 +18,11 @@ function handleTouchStart(event) {
 function handleTouchEnd(event) {
     touchEndY = event.changedTouches[0].clientY; // Get the ending touch position
 
-    if (touchStartY - touchEndY > 50) {
+    if (touchStartY - touchEndY > 10) {
         // Swiped Up
         navigateToHomeScreen();
     }
-    if (touchEndY - touchStartY > 50) {
+    if (touchEndY - touchStartY > 10) {
         // Swiped Down
         navigateToLockScreen();
     }
