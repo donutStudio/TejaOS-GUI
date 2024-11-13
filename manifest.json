@@ -3,11 +3,6 @@
     "short_name": "TejaOS",
     "display": "standalone",
     "orientation": "portrait",
-    "start_url": "/TejaOS-GUI/index.html",
-    "scope": "/TejaOS-GUI/",
-    "icons": [{
-         "src": "assets/tejatech_logo.svg",
-         "sizes": "64x64",
-         "type": "image/png/svg"
-     }]
+    "start_url": "/TejaOS-GUI/lockscreen.html",
+    "scope": "/TejaOS-GUI/"
  }
