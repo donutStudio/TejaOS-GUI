@@ -117,6 +117,25 @@
     <script src="battery.js"></script>
     <script src="lockscreen.js"></script>
     <script src="openApps.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  // Retrieve the scroll position stored in localStorage
+  const scrollPosition = JSON.parse(localStorage.getItem('scrollPosition'));
+
+  if (scrollPosition) {
+    // Wait for the page to be fully rendered, then scroll to the bottom
+    setTimeout(() => {
+      window.scrollTo(scrollPosition.x, scrollPosition.y); // Scroll to the bottom
+      localStorage.removeItem('scrollPosition'); // Clear scroll position from localStorage
+    }, 100); // Small delay to ensure all content is loaded
+  }
+});
+
+
+    </script>
+
+    <div id="bottom" style="height: 1px;"></div>
 </body>
 
 </html>
