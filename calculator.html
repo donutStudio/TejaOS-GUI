@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TejaOS</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #000;
+        }
+
+        .calculator {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 10px;
+        }
+
+        .output {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            font-size: 3em;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-family: LightFont;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background-color: #000;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .buttons button {
+            font-size: 1.5em;
+            font-family: "LightFont";
+            color: white;
+            padding: 20px;
+            border: none;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        .buttons button:active {
+            filter: brightness(200%);
+        }
+
+        .buttons .red {
+            background-color: #301c1c;
+        }
+
+        .buttons .faint-gray {
+            background-color: #373842;
+        }
+
+        .buttons .dark-blue {
+            background-color: #252844;
+            filter: drop-shadow(0px 0px 5px rgba(81, 81, 170, 0.589));
+        }
+
+        .buttons .bright-blue {
+            background-color: #005bbd;
+            filter: drop-shadow(0px 0px 20px blue);
+        }
+
+        .buttons .wide {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="time.js"></script>
+    <script src="reset.js"></script>
+    <script src="battery.js"></script>
+
+    <div id="navbar" style="z-index: 1000;">
+        <a id="time" class="time" style="font-family: LightFont; margin-top: 0.3vh; font-size: 14px;">11:30</a>
+        <img src="assets/wifi_PNG62364.png" class="navbar-icon">
+        <img src="assets/output-onlinepngtools.png" class="navbar-icon"
+            style="width: 20px; height: 20px; margin-left: 5px;">
+        <img src="assets/output-onlinepngtools1.png" class="navbar-icon" style="width: 20px; height: 20px;">
+        <div id="battery" class="battery-container">
+            <div id="battery-bar" class="battery-bar"></div>
+            <span id="battery-percentage" style="font-family: LightFont;">100%</span>
+        </div>
+    </div>
+
+    <div class="calculator">
+        <!-- Output area -->
+        <div id="output" class="output">
+            0
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons">
+            <button class="red" onclick="clearDisplay()">C</button>
+            <button class="red" onclick="backspace()">⌫</button>
+            <button class="faint-gray" onclick="appendOperator('^')">^</button>
+            <button class="dark-blue" onclick="appendOperator('+')">+</button>
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button class="dark-blue" onclick="appendOperator('-')">−</button>
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button class="dark-blue" onclick="appendOperator('*')">×</button>
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button class="dark-blue" onclick="appendOperator('/')">÷</button>
+            <button class="faint-gray" onclick="appendOperator('-')">-</button>
+            <button onclick="appendNumber('0')">0</button>
+            <button class="faint-gray" onclick="appendDecimal()">.</button>
+            <button class="bright-blue" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+
+    <script>
+        let currentValue = '0';
+        let storedValue = null;
+        let currentOperator = null;
+        let operatorSet = false;
+
+        function updateDisplay() {
+            document.getElementById('output').innerText = currentValue;
+        }
+
+        function clearDisplay() {
+            currentValue = '0';
+            storedValue = null;
+            currentOperator = null;
+            operatorSet = false;
+            updateDisplay();
+        }
+
+        function backspace() {
+            if (currentValue.length > 1) {
+                currentValue = currentValue.slice(0, -1);
+            } else {
+                currentValue = '0';
+            }
+            updateDisplay();
+        }
+
+        function appendNumber(number) {
+            if (operatorSet) {
+                currentValue += ` ${number}`; // Add the number to the current expression with the operator
+                operatorSet = false;
+            } else {
+                currentValue = currentValue === '0' ? number : currentValue + number;
+            }
+            updateDisplay();
+        }
+
+        function appendDecimal() {
+            if (!currentValue.includes('.')) {
+                currentValue += '.';
+            }
+            updateDisplay();
+        }
+
+        function appendOperator(operator) {
+            if (currentOperator && !operatorSet) {
+                calculateIntermediateResult();
+            }
+
+            storedValue = currentValue;
+            currentOperator = operator;
+            currentValue += ` ${operator} `; // Show operator in the output with space
+            operatorSet = true;
+            updateDisplay();
+        }
+
+        function toggleNegative() {
+            currentValue = currentValue.startsWith('-') ? currentValue.slice(1) : '-' + currentValue;
+            updateDisplay();
+        }
+
+        function calculateIntermediateResult() {
+            if (!storedValue || !currentOperator) return;
+
+            const a = parseFloat(storedValue);
+            const b = parseFloat(currentValue.split(' ').pop()); // Get only the last entered number
+            let result;
+
+            switch (currentOperator) {
+                case '+': result = a + b; break;
+                case '-': result = a - b; break;
+                case '*': result = a * b; break;
+                case '/': result = b !== 0 ? a / b : 'Error'; break;
+                case '^': result = Math.pow(a, b); break;
+                default: return;
+            }
+
+            // Round result to 3 decimal places if necessary
+            result = (Math.round(result * 1000) / 1000).toString();
+
+            currentValue = result;
+            storedValue = null;
+            currentOperator = null;
+            operatorSet = false;
+        }
+
+        function calculateResult() {
+            if (currentOperator && storedValue !== null) {
+                calculateIntermediateResult();
+            }
+            updateDisplay();
+        }
+    </script>
+
+</body>
+
+</html>

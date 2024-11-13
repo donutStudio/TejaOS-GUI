@@ -103,3 +103,10 @@ function openSettings() {
     
     window.location.href = fallbackURL;
 }
+
+function openCalculator() {
+    // This is a fallback URL if the app is not found (could be an internal page or an external one)
+    var fallbackURL = "calculator.html"; 
+    
+    window.location.href = fallbackURL;
+}
