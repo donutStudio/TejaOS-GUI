@@ -3,7 +3,7 @@
     "short_name": "TejaOS",
     "display": "standalone",
     "orientation": "portrait",
-    "start_url": "https://donutstudio.github.io/TejaOS-GUI/index.html",
+    "start_url": "/",
     "scope": "https://donutstudio.github.io/TejaOS-GUI/",
     "icons": [
     {
