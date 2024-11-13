@@ -9,16 +9,19 @@
     <link rel="manifest" href="manifest.json">
     <title>TejaOS</title>
     <style>
-        body {
+        html {
+            background-color: #000;
+        }
+        
+        content {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            color: #ffffff;
             margin: 0;
             padding: 20px;
         }
         h1 {
             text-align: center;
-            color: #444;
+            color: #ffffff;
         }
         .video-container {
             display: flex;
@@ -41,9 +44,6 @@
             margin-top: 10px;
             font-weight: bold;
         }
-        #navbar {
-            background-color: black;
-        }
     </style>
 </head>
 <body>
@@ -56,13 +56,16 @@
     <div id="navbar" style="z-index: 1000;">
         <a id="time" class="time" style="font-family: LightFont; margin-top: 0.3vh; font-size: 14px;">11:30</a>
         <img src="assets/wifi_PNG62364.png" class="navbar-icon">
-        <img src="assets/output-onlinepngtools.png" class="navbar-icon" style="width: 20px; height: 20px; margin-left: 5px;">
+        <img src="assets/output-onlinepngtools.png" class="navbar-icon"
+            style="width: 20px; height: 20px; margin-left: 5px;">
         <img src="assets/output-onlinepngtools1.png" class="navbar-icon" style="width: 20px; height: 20px;">
         <div id="battery" class="battery-container">
             <div id="battery-bar" class="battery-bar"></div>
             <span id="battery-percentage" style="font-family: LightFont;">100%</span>
         </div>
     </div>
+
+    <content>
 
     <h1>YouTube</h1>
 
@@ -85,5 +88,7 @@
             <div class="video-title">Minecraft RAINBOW DROPPER</div>
         </div>
     </div>
+
+    </content>
 </body>
 </html>
