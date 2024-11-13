@@ -1,11 +1,7 @@
-function openBrawlStars() {
-    // This is a fallback URL if the app is not found (could be an internal page or an external one)
-    var fallbackURL = "brawlStars.html"; 
-    
+function openApp(appURL, fallbackURL) {
     // This is a basic check to see if the device is mobile
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Try to open the app using a custom URL scheme (specific to Brawl Stars, if available)
-        var appURL = "brawlstars://"; // Replace this with the correct custom URL scheme for the app
+        // Try to open the app using a custom URL scheme (specific to the app, e.g., Brawl Stars, YouTube, etc.)
         
         // Try to open the app
         var start = new Date().getTime();
@@ -26,87 +22,30 @@ function openBrawlStars() {
     }
 }
 
+function openBrawlStars() {
+    openApp("brawlstars://", "brawlStars.html");
+}
 
 function openYouTube() {
-    // This is a fallback URL if the app is not found (could be an internal page or an external one)
-    var fallbackURL = "youTube.html"; 
-    
-    // This is a basic check to see if the device is mobile
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Try to open the app using a custom URL scheme (specific to Brawl Stars, if available)
-        var appURL = "youtube://"; // Replace this with the correct custom URL scheme for the app
-        
-        // Try to open the app
-        var start = new Date().getTime();
-        
-        // Set a timeout to redirect to the fallback URL if the app is not found
-        setTimeout(function() {
-            // If the app didn't open in 1.5 seconds, assume it isn't installed
-            if (new Date().getTime() - start < 1500) {
-                window.location.href = fallbackURL;
-            }
-        }, 1000);
-        
-        // Attempt to open the app
-        window.location.href = appURL;
-    } else {
-        // If it's not a mobile device, just redirect to a web page with more info or an alternative.
-        window.location.href = fallbackURL;
-    }
+    openApp("youtube://", "youTube.html");
 }
 
 function openSpotify() {
-    // This is a fallback URL if the app is not found (could be an internal page or an external one)
-    var fallbackURL = "spotify.html"; 
-    
-    // This is a basic check to see if the device is mobile
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Try to open the app using a custom URL scheme (specific to Brawl Stars, if available)
-        var appURL = "spotify://"; // Replace this with the correct custom URL scheme for the app
-        
-        // Try to open the app
-        var start = new Date().getTime();
-        
-        // Set a timeout to redirect to the fallback URL if the app is not found
-        setTimeout(function() {
-            // If the app didn't open in 1.5 seconds, assume it isn't installed
-            if (new Date().getTime() - start < 1500) {
-                window.location.href = fallbackURL;
-            }
-        }, 1000);
-        
-        // Attempt to open the app
-        window.location.href = appURL;
-    } else {
-        // If it's not a mobile device, just redirect to a web page with more info or an alternative.
-        window.location.href = fallbackURL;
-    }
+    openApp("spotify://", "spotify.html");
 }
 
 function openCamera() {
-    // This is a fallback URL if the app is not found (could be an internal page or an external one)
-    var fallbackURL = "camera.html"; 
-    
-    window.location.href = fallbackURL;
+    window.location.href = "camera.html";
 }
 
 function openMessages() {
-    // This is a fallback URL if the app is not found (could be an internal page or an external one)
-    var fallbackURL = "messages.html"; 
-    
-    window.location.href = fallbackURL;
+    window.location.href = "messages.html";
 }
 
 function openSettings() {
-    // This is a fallback URL if the app is not found (could be an internal page or an external one)
-    var fallbackURL = "settings.html"; 
-    
-    window.location.href = fallbackURL;
+    window.location.href = "settings.html";
 }
 
 function openCalculator() {
-    // This is a fallback URL if the app is not found (could be an internal page or an external one)
-    var fallbackURL = "calculator.html"; 
-    
-    window.location.href = fallbackURL;
+    window.location.href = "calculator.html";
 }
