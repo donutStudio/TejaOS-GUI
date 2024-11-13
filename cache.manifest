@@ -1,0 +1,28 @@
+CACHE MANIFEST
+
+# Network resources
+NETWORK:
+*
+# This tells the browser to always check for the latest version of any resource.
+# '*' means all network requests will be allowed.
+
+# Cache resources
+CACHE:
+/index.html
+/styles.css
+/loading.js
+/assets/tejatech_logo.svg
+/assets/wallpaper.jpg
+/assets/unnamed.webp
+/assets/youtube-app-icon.webp
+/assets/spotify-music-2015-07-30.avif
+/assets/output-onlinepngtools.png
+/assets/output-onlinepngtools1.png
+/assets/builtIn/camera.png
+/assets/builtIn/messages.png
+/assets/builtIn/settings.png
+/assets/builtIn/calculator.png
+
+# Fallback resources
+FALLBACK:
+/ /index.html
