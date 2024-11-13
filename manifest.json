@@ -1,0 +1,13 @@
+{
+    "name": "TejaOS",
+    "short_name": "TejaOS",
+    "display": "standalone",
+    "orientation": "portrait",
+    "start_url": "https://donutstudio.github.io/TejaOS-GUI/index.html",
+    "scope": "https://donutstudio.github.io/TejaOS-GUI/index.html",
+    "icons": [{
+         "src": "assets/tejatech_logo.svg",
+         "sizes": "64x64",
+         "type": "image/png/svg"
+     }]
+ }
